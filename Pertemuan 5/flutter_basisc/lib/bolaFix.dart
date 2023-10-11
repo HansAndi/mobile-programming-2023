@@ -13,6 +13,14 @@ class Bola extends StatelessWidget {
       'Mohamed Salah',
     ];
 
+    final List<String> image = [
+      'messi.webp',
+      'ronaldo.jpg',
+      'neymar.webp',
+      'mbappe.jpg',
+      'salah.webp',
+    ];
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Bola',
@@ -35,17 +43,10 @@ class Bola extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton(
-                      onPressed: (){
-                                                
-                      },
-                      child: const Text('Berita Terbaru')
-                    ),
+                        onPressed: () {}, child: const Text('Berita Terbaru')),
                     ElevatedButton(
-                      onPressed: (){
-                                                
-                      },
-                      child: const Text('Pertandingan Hari ini')
-                    ),
+                        onPressed: () {},
+                        child: const Text('Pertandingan Hari ini')),
                     // Text('Berita Terbaru'),
                     // Text('Pertandingan Hari ini'),
                   ],
@@ -56,17 +57,20 @@ class Bola extends StatelessWidget {
                 height: 200,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: List.generate(5, (index) => Container(
-                    width: 70,
-                    height: 200,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/899807.png'),
-                        fit: BoxFit.cover,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(8)),
-                    ),
-                  )),
+                  children: List.generate(
+                      5,
+                      (index) => Container(
+                            width: 70,
+                            height: 200,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/${image[index]}'),
+                                fit: BoxFit.cover,
+                              ),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(8)),
+                            ),
+                          )),
                 ),
               ),
               const Padding(
@@ -92,43 +96,47 @@ class Bola extends StatelessWidget {
               const SizedBox(height: 5),
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: List.generate(player.length, (index) => Padding(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  child: Container(
-                    width: 400,
-                    height: 150,
-                    color: Colors.grey,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30),
+                children: List.generate(
+                    player.length,
+                    (index) => Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
                           child: Container(
-                            height: 100,
-                            width: 100,
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/899807.png'),
-                                  fit: BoxFit.cover,
+                            width: 400,
+                            height: 150,
+                            color: Colors.grey,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 30),
+                                  child: Container(
+                                    height: 100,
+                                    width: 100,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/${image[index]}'),
+                                          fit: BoxFit.cover,
+                                        ),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(8)),
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                                borderRadius: BorderRadius.all(Radius.circular(8)),
-                              ),
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text('${index + 1}. ${player[index]}'),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text('${index + 1}. ${player[index]}'),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )),
+                        )),
               ),
             ],
           ),
