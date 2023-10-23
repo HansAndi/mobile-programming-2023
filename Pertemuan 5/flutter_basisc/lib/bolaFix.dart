@@ -43,7 +43,8 @@ class Bola extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     ElevatedButton(
-                        onPressed: () {}, child: const Text('Berita Terbaru')),
+                        onPressed: () {}, 
+                        child: const Text('Berita Terbaru')),
                     ElevatedButton(
                         onPressed: () {},
                         child: const Text('Pertandingan Hari ini')),
@@ -58,7 +59,7 @@ class Bola extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: List.generate(
-                      5,
+                      player.length,
                       (index) => Container(
                             width: 70,
                             height: 200,
@@ -97,7 +98,7 @@ class Bola extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(
-                    player.length,
+                    image.length,
                     (index) => Padding(
                           padding: const EdgeInsets.only(bottom: 10),
                           child: Container(
