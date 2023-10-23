@@ -86,7 +86,7 @@ class _KonversiSuhuState extends State<KonversiSuhu> {
                           const Text('Kelvin'),
                           const Divider(),
                           Text(
-                            kelvin.toStringAsFixed(2),
+                            kelvin.toStringAsFixed(kelvin.truncateToDouble() == kelvin ? 0 : 2),
                             style: const TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold
@@ -102,7 +102,7 @@ class _KonversiSuhuState extends State<KonversiSuhu> {
                           const Text('Reamur'),
                           const Divider(),
                           Text(
-                            reamur.toStringAsFixed(2),
+                            reamur.toStringAsFixed(reamur.truncateToDouble() == reamur ? 0 : 2),
                             style: const TextStyle(
                               fontSize: 30,
                               fontWeight: FontWeight.bold
