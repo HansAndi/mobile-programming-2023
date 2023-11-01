@@ -56,6 +56,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -72,87 +73,100 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         color: Colors.black,
                       ),
                 ),
-                const SizedBox(height: 32),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 Form(
                   key: _formKey,
-                  child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // const Text(
-                      //   'Email',
-                      //   style: TextStyle(
-                      //     fontWeight: FontWeight.bold,
-                      //   ),
-                      // ),
-                      TextFormField(
-                        controller: name,
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(vertical: 0),
-                            helperText: ' ',
-                            prefixIcon: Icon(Icons.person),
-                            // hintText: 'Enter your email',
-                            labelText: 'Name'),
-                        validator: _nameValidator,
-                      ),
-                      const SizedBox(height: 5),
-                      TextFormField(
-                        controller: email,
-                        keyboardType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                        decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(vertical: 0),
-                            helperText: ' ',
-                            prefixIcon: Icon(Icons.email),
-                            // hintText: 'Enter your email',
-                            labelText: 'Email'),
-                        validator: _emailValidator,
-                      ),
-                      const SizedBox(height: 5),
-                      TextFormField(
-                        controller: password,
-                        obscureText: _obscureText,
-                        decoration: InputDecoration(
-                          contentPadding:
-                              const EdgeInsets.symmetric(vertical: 0),
-                          // hintText: 'Enter your password',
-                          helperText: ' ',
-                          prefixIcon: const Icon(Icons.lock),
-                          labelText: 'Password',
-                          suffixIcon: IconButton(
-                            icon: Icon(_obscureText
-                                ? Icons.visibility_off
-                                : Icons.visibility),
-                            onPressed: () {
-                              setState(() {
-                                _obscureText = !_obscureText;
-                              });
-                            },
-                          ),
-                        ),
-                        validator: _passwordValidator,
-                      ),
-                      Row(
-                        children: [
-                          Checkbox(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(3),
+                  child: Container(
+                    padding: EdgeInsets.only(
+                      left: size.width * 0.02,
+                      right: size.width * 0.02,
+                    ),
+                    child: Column(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        TextFormField(
+                          controller: name,
+                          keyboardType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(vertical: 0),
+                              helperText: ' ',
+                              prefixIcon: Icon(
+                                Icons.person,
+                                color: Colors.grey,
                               ),
-                              value: _rememberMe,
-                              onChanged: (value) {
+                              // hintText: 'Enter your email',
+                              labelText: 'Name'),
+                          validator: _nameValidator,
+                        ),
+                        const SizedBox(height: 5),
+                        TextFormField(
+                          controller: email,
+                          keyboardType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
+                          decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(vertical: 0),
+                              helperText: ' ',
+                              prefixIcon: Icon(
+                                Icons.email,
+                                color: Colors.grey,
+                              ),
+                              // hintText: 'Enter your email',
+                              labelText: 'Email'),
+                          validator: _emailValidator,
+                        ),
+                        const SizedBox(height: 5),
+                        TextFormField(
+                          controller: password,
+                          obscureText: _obscureText,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                const EdgeInsets.symmetric(vertical: 0),
+                            // hintText: 'Enter your password',
+                            helperText: ' ',
+                            prefixIcon: const Icon(
+                              Icons.lock,
+                              color: Colors.grey,
+                            ),
+                            labelText: 'Password',
+                            suffixIcon: IconButton(
+                              icon: Icon(_obscureText
+                                  ? Icons.visibility_off
+                                  : Icons.visibility),
+                              onPressed: () {
                                 setState(() {
-                                  _rememberMe = value!;
+                                  _obscureText = !_obscureText;
                                 });
-                              }),
-                          const Text('Remember me'),
-                        ],
-                      ),
-                    ],
+                              },
+                            ),
+                          ),
+                          validator: _passwordValidator,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
+                Row(
+                  children: [
+                    Checkbox(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                        activeColor: Colors.grey[600],
+                        value: _rememberMe,
+                        onChanged: (value) {
+                          setState(() {
+                            _rememberMe = value!;
+                          });
+                        }),
+                    const Text('I agree terms and conditions'),
+                  ],
+                ),
                 Container(
-                  margin: const EdgeInsets.all(10),
+                  padding: EdgeInsets.only(
+                    left: size.width * 0.02,
+                    right: size.width * 0.02,
+                  ),
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
@@ -179,14 +193,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       shape: MaterialStatePropertyAll(
                         RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(15),
                         ),
+                      ),
+                      backgroundColor: MaterialStateProperty.all(
+                        const Color.fromARGB(255, 61, 64, 67),
+                      ),
+                      overlayColor: MaterialStatePropertyAll(
+                        Colors.black.withOpacity(0.1),
                       ),
                     ),
                     child: const Text('Sign Up'),
                   ),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: size.height * 0.02),
                 RichText(
                   text: TextSpan(
                     text: "Already have an account? ",
@@ -237,7 +257,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 25),
+                  padding: const EdgeInsets.symmetric(vertical: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: List.generate(
@@ -245,8 +265,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       (index) => GestureDetector(
                         onTap: () => print('login with ${logo[index]}'),
                         child: Container(
-                          height: 50,
-                          width: 50,
+                          height: 45,
+                          width: 45,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
                             color: Colors.white,
