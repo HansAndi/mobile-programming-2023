@@ -63,8 +63,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                // SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                // // SvgPicture.asset('assets/logo/logo.svg'),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.07),
                 Text(
                   'Register an Account!',

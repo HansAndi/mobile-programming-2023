@@ -52,8 +52,6 @@ class _LoginScreenState extends State<LoginScreen> {
             padding: const EdgeInsets.all(20),
             child: Column(
               children: [
-                // SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                // // SvgPicture.asset('assets/logo/logo.svg'),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.07),
                 Text(
                   'Welcome back!',
@@ -120,38 +118,39 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           validator: _passwordValidator,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Checkbox(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(3),
-                                    ),
-                                    value: _rememberMe,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _rememberMe = value!;
-                                      });
-                                    }),
-                                const Text('Remember me'),
-                              ],
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                // Implement forgot password
-                              },
-                              child: const Text(
-                                'Forgot password?',
-                                style: TextStyle(color: Color(0xFF3D80DE)),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Checkbox(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(3),
+                            ),
+                            activeColor: Colors.grey[600],
+                            value: _rememberMe,
+                            onChanged: (value) {
+                              setState(() {
+                                _rememberMe = value!;
+                              });
+                            }),
+                        const Text('Remember me'),
+                      ],
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        // Implement forgot password
+                      },
+                      child: const Text(
+                        'Forgot password?',
+                        style: TextStyle(color: Color(0xFF3D80DE)),
+                      ),
+                    ),
+                  ],
                 ),
                 Container(
                   padding: EdgeInsets.only(
@@ -196,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text('Login'),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: size.height * 0.02),
                 RichText(
                   text: TextSpan(
                     text: "Don't have an account? ",

@@ -1,5 +1,8 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:uts/LoginScreen.dart';
+//cupertino
+import 'package:flutter/cupertino.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,18 +14,26 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    super.initState();
+    // super.initState();
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(context,
+      Navigator.push(context,
           MaterialPageRoute(builder: (context) => const LoginScreen()));
     });
+    // Timer(const Duration(seconds: 1), () {
+    //   Navigator.pushAndRemoveUntil(
+    //       context,
+    //       MaterialPageRoute(builder: (_) => const LoginScreen()),
+    //       (route) => false);
+    // });
+
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.amber,
-      body: Center(
+    return Scaffold(
+      backgroundColor: Colors.grey[800],
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
