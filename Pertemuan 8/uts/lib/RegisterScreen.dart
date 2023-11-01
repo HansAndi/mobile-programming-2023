@@ -60,10 +60,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(20),
             child: Column(
               children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.07),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 Text(
                   'Register an Account!',
                   style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -71,7 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         color: Colors.black,
                       ),
                 ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.08),
                 Form(
                   key: _formKey,
                   child: Container(
