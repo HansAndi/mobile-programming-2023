@@ -130,9 +130,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             labelText: 'Password',
                             suffixIcon: IconButton(
-                              icon: Icon(_obscureText
-                                  ? Icons.visibility_off
-                                  : Icons.visibility),
+                              icon: _obscureText
+                                  ? const Icon(
+                                      Icons.visibility_off,
+                                      color: Colors.grey,
+                                    )
+                                  : const Icon(
+                                      Icons.visibility,
+                                      color: Colors.black,
+                                    ),
                               onPressed: () {
                                 setState(() {
                                   _obscureText = !_obscureText;
