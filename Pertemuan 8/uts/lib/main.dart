@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uts/SplashScreen.dart';
+import 'package:uts/LoginScreen.dart';
+import 'package:uts/RegisterScreen.dart';
 import 'constant.dart';
 
 void main() {
@@ -14,21 +16,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: Colors.black54,
+          selectionColor: Colors.black54,
+          selectionHandleColor: Colors.black54,
+        ),
         inputDecorationTheme: InputDecorationTheme(
           fillColor: const Color(0xFFFBFBFB),
           filled: true,
           border: defaultOutlineInputBorder,
           enabledBorder: defaultOutlineInputBorder,
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(14),
-            borderSide: const BorderSide(color: Color(0xFFF2994A)),
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(color: Colors.grey),
+          ),
+          floatingLabelStyle: TextStyle(
+            color: Colors.grey[800],
           ),
         ),
       ),
+      debugShowCheckedModeBanner: false,
       // initialRoute: "/",
       // routes: {
       //   "/": (context) => const SplashScreen(),
       //   "/login": (context) => const LoginScreen(),
+      //   "/register": (context) => const RegisterScreen(),
       // },
       home: const SplashScreen(),
     );
