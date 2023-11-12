@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:uts/SplashScreen.dart';
-import 'package:uts/LoginScreen.dart';
-import 'package:uts/RegisterScreen.dart';
 import 'constant.dart';
 
 void main() {

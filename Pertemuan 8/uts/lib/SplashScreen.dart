@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:uts/LoginScreen.dart';
-//cupertino
-import 'package:flutter/cupertino.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -37,10 +35,6 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // SizedBox(height: 30,)
-            // CupertinoActivityIndicator(
-            //   radius: 20,
-            // )
             CircularProgressIndicator(
               color: Colors.white,
             )
