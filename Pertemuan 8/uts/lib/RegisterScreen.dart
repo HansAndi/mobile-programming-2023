@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -172,23 +173,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     right: size.width * 0.02,
                   ),
                   child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        showDialog(
-                          context: context,
-                          builder: (context) => AlertDialog(
-                            title: const Text("Sign Up Success"),
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("Name : ${name.text}"),
-                                Text("Email : ${email.text}"),
-                                Text("Password : ${password.text}"),
-                              ],
+                        try {
+                          final result = await FirebaseAuth.instance
+                              .createUserWithEmailAndPassword(
+                            email: email.text,
+                            password: password.text,
+                          );
+                          showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: const Text("Sign Up Success"),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("Name : ${name.text}"),
+                                  Text("Email : ${email.text}"),
+                                  Text("Password : ${password.text}"),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
+                          );
+                        } on FirebaseAuthException catch (e) {
+                          if (e.code == 'weak-password') {
+                            print('The password provided is too weak.');
+                          } else if (e.code == 'email-already-in-use') {
+                            print('The account already exists for that email.');
+                          }
+                        } catch (e) {
+                          print(e);
+                        }
                       }
                     },
                     style: ButtonStyle(
